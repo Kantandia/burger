@@ -14,5 +14,11 @@ var burgers = {
             cb(res);
         });
     },
-    
+    devour: function (objColVals, condition, cb) {
+        orm.devour('Burgers', objColVals, conditon, function (res) {
+            cb(res);
+        });
+        
+    }
+
 }
