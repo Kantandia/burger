@@ -37,4 +37,13 @@ router.put('/burgers/devour/:id', function(req, res) {
     });
 });
 
+router.delete('burgers', condition);
+
+burgers.clear(condition, function() {
+    res.redirect('/burgers');
+});
+
+
+module.exports = router;
+
 
