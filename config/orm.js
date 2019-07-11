@@ -68,3 +68,19 @@ var orm = {
         });
 
     },
+
+    clear: function(table, condition, cb) {
+        var queryString = 'DELETE FROM ' + table;
+
+        queryString = queryString + ' WHERE ';
+        queryString = queryString + condition;
+
+        console.log('\nQuery:', queryString);
+        connection.query(queryString, function(err, result) {
+            if (err) throw err;
+            cb(result);
+        });
+    }   
+};
+
+module.exports = orm;
