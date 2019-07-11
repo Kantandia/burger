@@ -52,3 +52,19 @@ var orm = {
             cb(result);
         });
     },
+
+    devour: function(table, objColVals, condition, cb) {
+        var queryString = 'UPDATE ' + table;
+
+        queryString = queryString + ' SET ';
+        queryString = queryString + objToSql(objColVals);
+        queryString = queryString + ' WHERE ';
+        queryString = queryString + condition;
+
+        console.log('\nQuery:', queryString);
+        connection.query(queryString, function(err, result) {
+            if (err) throw err;
+            cb(result);
+        });
+
+    },
