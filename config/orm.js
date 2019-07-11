@@ -23,3 +23,32 @@ function objToSql(ob) {
 
     return arr.toString();
 }
+
+var orm = {
+    all: function(tableInput, cb) {
+        var queryString = 'SELECT * FROM ' + tableInput + ';';
+        connection.query(queryString, function(err, result) {
+                if (err) throw err;
+                cb(result);
+        });
+    },
+    
+
+    create: function(table, cols, vals, cb) {
+        console.log(vals);
+        var queryString = 'INSERT INTO ' + table;
+
+        queryString = queryString + ' (';
+        queryString = queryString + cols.toString();
+        queryString = queryString + ') ';
+        queryString = queryString + 'VALUES (';
+        queryString = queryString + printQuestionMarks(vals.length);
+        queryString = queryString + ') ';
+
+        console.log('\nQuery:', queryString);
+
+        connection.query(queryString, vals, function(err, result) {
+            if (err) throw err;
+            cb(result);
+        });
+    },
