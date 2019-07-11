@@ -15,3 +15,14 @@ router.get('/burgers', function(req, res) {
         res.render('index', hbsObject);
     });
 });
+
+router.post('/burgers/create', function(req, res) {
+    console.log(req.body.name);
+    console.log(req.body.devoured);
+    burgers.create(['name', 'devoured'], [req.body.name, req.body.devoured], function() {
+        res.redirect('/burgers');
+    });
+});
+
+
+
