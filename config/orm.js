@@ -10,3 +10,16 @@ function printQuestionMarks(num) {
 
     return arr.toString();
 }
+
+function objToSql(ob) {
+    
+    var arr = [];
+
+    for (var key in ob) {
+        if (ob.hasOwnProperty(key)) {
+            arr.push(key + '=' +  ob[key]);
+        }
+    }
+
+    return arr.toString();
+}
